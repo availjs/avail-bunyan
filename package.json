@@ -1,0 +1,27 @@
+{
+  "name": "@availjs/avail-bunyan",
+  "version": "1.0.0",
+  "description": "avail services with bunyan logging",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/availjs/avail-bunyan.git"
+  },
+  "keywords": [
+    "services",
+    "logging"
+  ],
+  "author": "Justin Beaudry <beaudry.justin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/availjs/avail-bunyan/issues"
+  },
+  "homepage": "https://github.com/availjs/avail-bunyan#readme",
+  "dependencies": {
+    "@availjs/avail": "^1.0.1",
+    "bunyan": "^1.8.12"
+  }
+}
