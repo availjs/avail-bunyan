@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/availjs/avail-bunyan#readme",
   "dependencies": {
-    "@availjs/avail": "^1.0.1",
-    "bunyan": "^1.8.12"
+    "@availjs/avail": "1.x.x",
+    "bunyan": "1.x.x"
   }
 }
