@@ -1,9 +1,9 @@
 'use strict'
 
-const AvailBunyan = require('./src/avail_bunyan');
+const WithBunyan = require('./src/WithBunyan');
 const Errors = require('@availjs/avail').Errors;
 
 module.exports = {
-  AvailBunyan,
+  WithBunyan,
   Errors
 }
