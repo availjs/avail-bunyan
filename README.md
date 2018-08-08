@@ -1,9 +1,8 @@
 AvailBunyan
 ===========
 
-Higher Order Bunyan Avail Service for service composition
-
-Adds a `log` method to your Avail Service that uses [bunyan](https://github.com/trentm/node-bunyan).
+Higher Order Bunyan Avail Service that adds a `log` method to your Avail Service. 
+AvailBunyan is powered by [bunyan](https://github.com/trentm/node-bunyan).
 
 ## Installation
 ```bash
