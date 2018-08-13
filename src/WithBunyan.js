@@ -10,8 +10,26 @@ const DEFAULT_LOG_OPTIONS = {
 
 function Factory(AvailService) {
   return class extends AvailService {
+    /**
+     *
+     * @param name
+     * @param dependencies
+     * @param init
+     * @param logOptions
+     */
     constructor(name, dependencies, init, logOptions={}) {
       super(name, dependencies, init);
+      if (logOptions) {
+        this.addLogger(name, logOptions);
+      }
+    }
+
+    /**
+     *
+     * @param {String} (name)
+     * @param {Object} (logOptions) - binyan
+     */
+    addLogger(name, logOptions={}) {
       this.log = bunyan.createLogger(Object.assign(DEFAULT_LOG_OPTIONS, {
         name: name || 'avail-service'
       }, logOptions));
@@ -33,7 +51,9 @@ function WithBunyan(logOptions, AvailService=Avail) {
    * @param {Array<Avail>} (dependencies)
    * @param {Function<Promise<*>>} (init)
    */
-  return (name, dependencies, init) => new (Factory(AvailService))(name, dependencies, init, logOptions);
+  return (name, dependencies, init, _logOptions) => {
+    return new (Factory(AvailService))(name, dependencies, init, logOptions || _logOptions)
+  };
 }
 
 module.exports = WithBunyan;
