@@ -8,51 +8,36 @@ const DEFAULT_LOG_OPTIONS = {
   serializers: bunyan.stdSerializers
 };
 
-function Factory(AvailService) {
+/**
+ *
+ * @param {String} (name)
+ * @param {Object} (logOptions) - binyan
+ */
+function addLogger(name, logOptions={}) {
+  this.log = bunyan.createLogger(Object.assign(DEFAULT_LOG_OPTIONS, {
+    name: name || 'avail-service'
+  }, logOptions));
+}
+
+/**
+ *
+ * @param {Object} logOptions
+ * @param {Avail} (AvailService) [Avail]
+ * @returns {Function<Avail>}
+ * @constructor
+ */
+function WithBunyan(logOptions={}, AvailService=Avail) {
   return class extends AvailService {
     /**
      *
      * @param name
      * @param dependencies
      * @param init
-     * @param logOptions
      */
-    constructor(name, dependencies, init, logOptions={}) {
+    constructor(name, dependencies, init) {
       super(name, dependencies, init);
-      if (logOptions) {
-        this.addLogger(name, logOptions);
-      }
+      addLogger.call(this, name, logOptions);
     }
-
-    /**
-     *
-     * @param {String} (name)
-     * @param {Object} (logOptions) - binyan
-     */
-    addLogger(name, logOptions={}) {
-      this.log = bunyan.createLogger(Object.assign(DEFAULT_LOG_OPTIONS, {
-        name: name || 'avail-service'
-      }, logOptions));
-    }
-  };
-}
-
-/**
- *
- * @param {Object} (logOptions) - bunyan log options
- * @param {Avail} (AvailService) [Avail]
- * @returns {Function<Avail>}
- * @constructor
- */
-function WithBunyan(logOptions, AvailService=Avail) {
-  /**
-   *
-   * @param {String} name
-   * @param {Array<Avail>} (dependencies)
-   * @param {Function<Promise<*>>} (init)
-   */
-  return (name, dependencies, init, _logOptions) => {
-    return new (Factory(AvailService))(name, dependencies, init, logOptions || _logOptions)
   };
 }
 
