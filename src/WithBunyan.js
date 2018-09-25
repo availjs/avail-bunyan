@@ -11,7 +11,7 @@ const DEFAULT_LOG_OPTIONS = {
 /**
  *
  * @param {String} (name)
- * @param {Object} (logOptions) - bunyan logger optionsj
+ * @param {Object} (logOptions) - bunyan logger options
  */
 function addLogger(name, logOptions) {
   this.log = bunyan.createLogger(Object.assign(DEFAULT_LOG_OPTIONS, {
@@ -26,7 +26,7 @@ function addLogger(name, logOptions) {
  * @returns {Function<Avail>}
  * @constructor
  */
-function WithBunyan(logOptions={}, AvailService=Avail) {
+function WithBunyan(logOptions, AvailService=Avail) {
   return class extends AvailService {
     /**
      *
