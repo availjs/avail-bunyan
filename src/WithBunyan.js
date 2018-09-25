@@ -11,9 +11,9 @@ const DEFAULT_LOG_OPTIONS = {
 /**
  *
  * @param {String} (name)
- * @param {Object} (logOptions) - binyan
+ * @param {Object} (logOptions) - bunyan logger optionsj
  */
-function addLogger(name, logOptions={}) {
+function addLogger(name, logOptions) {
   this.log = bunyan.createLogger(Object.assign(DEFAULT_LOG_OPTIONS, {
     name: name || 'avail-service'
   }, logOptions));
